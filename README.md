@@ -1,5 +1,5 @@
 # PullRepoScript
-A simple Python script providing a GUI interface to pull multiple at once.
+A simple Python script providing a GUI interface to pull multiple repositories.
 
 ## Manual Execution
 * Place `PullRepos.py` in the parent directory containing your repositories.
