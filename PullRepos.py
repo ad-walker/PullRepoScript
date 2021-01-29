@@ -4,10 +4,7 @@ from tkinter import messagebox
 import os
 import subprocess
 from subprocess import call, STDOUT
-
-# Constants for tuple readability.
-PATH = 0
-PULL = 1
+import collections
 
 # Tkinter window
 root = Tk(className=' Repo Updater')
@@ -16,10 +13,10 @@ root.minsize(int(root.winfo_screenwidth() * 0.25), int(root.winfo_screenheight()
 # Navigate to the paths provided in the repoList and calls git pull
 def getRepos(repoList):
     for repo in repoList:
-        if repo[PULL].get() == True:
+        if repo.pull.get() == True:
             # Navigate to the directory.
             try: 
-                os.chdir(repo[PATH])
+                os.chdir(repo.path)
                 subprocess.call(["git", "pull"])   
             except:
                 messagebox.showerror("Error!", message="Super helpful error message\n\n{}.".format(sys.exc_info()))
@@ -42,8 +39,9 @@ def main():
             # Each repo will have a checkbox for the user to choose whether or not to pull it, this var will store that state.
             boolVar = BooleanVar(root, True, name ='{}'.format(path))
             # Create a tuple of the path and the boolean and append it to the list.
-            repoTuple = (path, boolVar)
-            repoList.append(repoTuple)
+            Repo = collections.namedtuple("Repo", ["path", "pull"])
+            r = Repo(path = path, pull = boolVar)
+            repoList.append(r)
             # Draw the checkbox.
             Checkbutton(root, text = '{repo}'.format(repo=path), font=("TkDefaultFont", 18), variable = boolVar, onvalue = True, offvalue = False).pack(padx=10, pady=2, anchor=W)
     except:
