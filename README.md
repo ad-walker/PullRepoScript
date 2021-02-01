@@ -5,7 +5,7 @@ A simple Python script providing a GUI interface to pull multiple repositories.
 * Place `PullRepos.py` in the parent directory containing your repositories.
 * From the terminal, navigate to the directory and run `python PullRepos.py`
 * You should now see a dialog with all of the repositories found in the directory.
-![GUI](https://www.upnad.am/images/gui.png)
+![GUI](https://www.upnad.am/images/gui_make.png)
 
 ## As a Cron Job
 * From the terminal navigate to your root directory and open crontab: `cd ~/. && crontab -e`
